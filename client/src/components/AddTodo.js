@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/AddTodo.scss'
 
 export default function AddTodo({ addItem }) {
   const [todoItem, setTodoItem] = useState({
@@ -12,7 +13,7 @@ export default function AddTodo({ addItem }) {
     });
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyUp = (e) => {
     if (e.key === 'Enter') {
       onButtonClick();
     }
@@ -25,7 +26,7 @@ export default function AddTodo({ addItem }) {
         placeholder="Add your new Todo"
         value={todoItem.title}
         onChange={(e) => setTodoItem({ title: e.target.value })}
-        onKeyDown={handleKeyDown} // onKeyPress 대신 onKeyDown 사용
+        onKeyPress={handleKeyUp} // onKeyPress 대신 onKeyDown 사용
       />
       <button onClick={onButtonClick}>ADD</button>
     </div>
